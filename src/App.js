@@ -9,7 +9,11 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:5328/api/python');
+      const response = await fetch('https://c377-118-173-157-105.ngrok-free.app/get_poll', {
+        mode: 'cors',
+        method: 'GET',
+        headers: {'Content-Type':'application/json', 'Access-Control-Allow-Credentials':true, 'Access-Control-Allow-Origin':'*', 'Access-Control-Allow-Methods':'GET,OPTIONS,PATCH,DELETE,POST,PUT', 'Access-Control-Allow-Headers':'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'}
+      });
       const data = await response.json();
 
       setQuestion(data.question);
