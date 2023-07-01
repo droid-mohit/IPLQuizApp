@@ -9,7 +9,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:5328/get_poll');
+      const response = await fetch('http://localhost:5328/api/python');
       const data = await response.json();
 
       setQuestion(data.question);
