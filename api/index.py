@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_cors import CORS
 
 import json
 import openai
@@ -12,7 +11,6 @@ df_scoreboard = pd.read_csv('IPL2023_Match_Scoreboard_clean.csv')
 df_matches = pd.read_csv('IPL2023_Matches_clean.csv')
 
 app = Flask(__name__)
-CORS(app)
 
 batsman = ['Devon Conway', 'Ruturaj Gaikwad', 'Moeen Ali', 'Ben Stokes', 'Ambati Rayudu',
            'Shivam Dube', 'Ravindra Jadeja', 'MS Dhoni', 'Mitchell Santner',
@@ -218,7 +216,7 @@ def generate_question_query():
         return function_response
 
 
-@app.route('/get_poll')
+@app.route('/api/python')
 def hello_world():
     return generate_question_query()
 
