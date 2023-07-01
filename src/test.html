@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poll Page</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Function to handle the button click
+    function callAPI() {
+      $.ajax({
+        url: 'http://localhost:5000/get_poll', // Replace with your API endpoint
+        type: 'POST',
+        data: JSON.stringify({ "question": "What is the capital of France?", "options": ["Paris", "London", "Berlin"], "answer": "Paris" }),
+        contentType: 'application/json',
+        success: function(response) {
+          displayPoll(response);
+        },
+        error: function() {
+          alert('Error occurred while calling the API.');
+        }
+      });
+    }
+
+    // Function to display the poll based on the response
+    function displayPoll(response) {
+      var question = response.question;
+      var options = response.options;
+      var answer = response.answer;
+
+      // Create the poll HTML elements
+      var pollHTML = '<h3>' + question + '</h3>';
+      for (var i = 0; i < options.length; i++) {
+        pollHTML += '<input type="radio" name="option" value="' + options[i] + '">' + options[i] + '<br>';
+      }
+      pollHTML += '<br><button onclick="checkAnswer(\'' + answer + '\')">Submit</button>';
+
+      // Display the poll
+      document.getElementById('poll').innerHTML = pollHTML;
+    }
+
+    // Function to check the selected answer
+    function checkAnswer(answer) {
+      var selectedOption = document.querySelector('input[name="option"]:checked');
+
+      if (selectedOption && selectedOption.value === answer) {
+        alert('Correct Answer!');
+      } else {
+        alert('Sorry, Better Luck Next Time!');
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Poll Page</h1>
+  <button onclick="callAPI()">Load Poll</button>
+  <div id="poll"></div>
+</body>
+</html>
