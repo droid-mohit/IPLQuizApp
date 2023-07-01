@@ -9,7 +9,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:5000/get_poll');
+      const response = await fetch('https://c377-118-173-157-105.ngrok-free.app/get_poll');
       const data = await response.json();
 
       setQuestion(data.question);
