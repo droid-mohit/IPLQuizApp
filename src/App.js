@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./App.css"
 
 function App() {
   const [question, setQuestion] = useState('');
@@ -6,9 +7,12 @@ function App() {
   const [answer, setAnswer] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
   const [popupMessage, setPopupMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  
 
   const fetchData = async () => {
     try {
+      setLoading(true)
       const response = await fetch('/get_poll', {
         mode: 'cors',
         method: 'GET',
@@ -16,12 +20,13 @@ function App() {
       }
       });
       const data = await response.json();
-
+      setLoading(false)
       setQuestion(data.question);
       setOptions(data.options);
       setAnswer(data.answer);
       setPopupMessage('');
     } catch (error) {
+      setLoading(false)
       console.error('Error fetching data:', error);
     }
   };
