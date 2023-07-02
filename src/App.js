@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "./App.css"
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { Typography } from '@mui/material';
 
 function App() {
   const [question, setQuestion] = useState('');
@@ -56,7 +57,7 @@ function App() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              height: "100vh",
+              gap: '2rem'
             }}
           >
             <CircularProgress />
@@ -85,6 +86,7 @@ function App() {
                       ))}
                     </form>
                     <button onClick={handlePollSubmit}>Submit</button>
+                    
                   </div>
                 )}
                 {popupMessage && (
@@ -95,6 +97,9 @@ function App() {
             </div>
         </div>
       )}
+      <Typography variant="caption" display="block" gutterBottom>
+          <a href="https://github.com/droid-mohit/drd-trivia-backend" sx={{textDecoration: 'underline'}}>Powered by ChatGPT</a>
+      </Typography>
     </div>
   );
 }
