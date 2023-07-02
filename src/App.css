@@ -1,4 +1,4 @@
-.popup {
+/* .popup {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -15,7 +15,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
+} */
 
 .App {
   display: flex;

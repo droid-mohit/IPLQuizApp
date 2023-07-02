@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import "./App.css"
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 function App() {
   const [question, setQuestion] = useState('');
@@ -47,34 +49,52 @@ function App() {
     <div className="App">
       <h1>Poll App</h1>
       <button onClick={fetchData}>Load Poll</button>
-      <div className="poll-container">
-        {question && (
-          <div>
-            <h2>{question}</h2>
-            <form>
-              {options.map((option) => (
-                <div key={option}>
-                  <label>
-                    <input
-                      type="radio"
-                      value={option}
-                      checked={selectedOption === option}
-                      onChange={handleOptionChange}
-                    />
-                    {option}
-                  </label>
-                </div>
-              ))}
-            </form>
-            <button onClick={handlePollSubmit}>Submit</button>
-          </div>
-        )}
-        {popupMessage && (
-          <div className="popup">
-            <p>{popupMessage}</p>
-          </div>
+      <div className="loader">
+        {loading && (
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100vh",
+            }}
+          >
+            <CircularProgress />
+          </Box>
         )}
       </div>
+      {!loading && (
+        <div className="outputContainer">
+            <div className="poll-container">
+                {question && (
+                  <div>
+                    <h2>{question}</h2>
+                    <form>
+                      {options.map((option) => (
+                        <div key={option}>
+                          <label>
+                            <input
+                              type="radio"
+                              value={option}
+                              checked={selectedOption === option}
+                              onChange={handleOptionChange}
+                            />
+                            {option}
+                          </label>
+                        </div>
+                      ))}
+                    </form>
+                    <button onClick={handlePollSubmit}>Submit</button>
+                  </div>
+                )}
+                {popupMessage && (
+                  <div className="popup">
+                    <p>{popupMessage}</p>
+                  </div>
+                )}
+            </div>
+        </div>
+      )}
     </div>
   );
 }
