@@ -14,7 +14,7 @@ https://github.com/sidPhoenix17/drd-trivia-backend/assets/16644933/b5b0175b-28cf
 You can deploy your own version of the trivia game.
 
 Backend code: https://github.com/droid-mohit/drd-trivia-backend
-Frontend code: https://github.com/droid-mohit/drd-trivia-backend
+Frontend code: https://github.com/droid-mohit/IPLQuizApp/
 Process we followed: https://notes.drdroid.io/create-a-trivia-game-about-a-random-topic-in-2-hours
 
 
