@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Poll App</h1>
+      <h1>IPL Trivia Game</h1>
       <button onClick={fetchData}>Load Poll</button>
       <div className="loader">
         {loading && (
